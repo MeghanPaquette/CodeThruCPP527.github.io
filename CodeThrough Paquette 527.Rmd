@@ -1,0 +1,98 @@
+---
+title: "Improving Visualizations with Esquisse"
+author: "Meghan Paquette"
+date: "10/8/2020"
+output: 
+  html_document:
+    df_print: paged
+    theme: darkly
+    highlight: haddock
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Finding a Topic
+
+Completing a Code Through previosly in CPP526 was a little easier given even very basic packages could be used. For this course, I wanted to find a package I haven't really used yet that also brings in my interest in data visualization.  I first started looking at packages to demonstrate, and I came across *esquisse*. This package allows the user to ‘drag-and-drop’ information as an add-in for generating plots in R. That’s right – esquisse is a package that lets you create plots without having to code them. As coding is something I am still learning, this intrigued me. 
+
+<br>
+
+### Loading the Package and Data
+
+For the code-through, I am loading two data sets, just as an example. Esquisse looks at the type of data such as numerica or factor. 
+
+```{r}
+library(ggplot2)
+library(esquisse)
+```
+
+```{r}
+dat <- USArrests
+head(dat, 3) 
+```
+```{r}
+dat2 <- mpg
+head(dat2, 3)
+```
+<br>
+
+### Using the Package
+
+Now, from here, when this code chuck below runs, a pop-up will appear which is where you can ‘drag-and-drop’ information. 
+<br>
+
+This part below would be in an r code chunk, but for the sake of knitting to html, it is listed as a stand alone in bold. 
+<br>
+
+{r}**esquisse::esquisser()**
+
+<br>
+
+##### STEP 1: Select what dataset you want to use. I imported two datasets above, so you can see.
+<br>
+![](StartPage.jpeg)
+
+<br>
+
+##### STEP 2: Select variable and convert any variables as desired/needed. 
+<br>
+![](DataSelect.jpeg)
+<br>
+
+##### STEP 3: Drag-and-Drop data into the desired areas. Similar to coding the labels in gglot, users can drag the variable and select the types of plots and charts. 
+<br>
+![](AddData.jpeg)
+
+<br>
+
+##### STEP 4: Customization - users can change the color, theme, types of plots, titles, etc. This part is really helpful even to just understand the coding through visuals. By adding colors, smoothlines, titles/descriptions, and types of plots, it helps to visual teach myself how the code relates back to the visuals. 
+<br>
+![](EditDataCode.jpeg)
+
+
+### Inserting the Graphic into R
+
+There are a couple of options for inserting the code into R. There is a spot in the bottom right corner of the package that has an option to insert the code or the user can also copy the code. This will input the code into R to have the graphic like below. 
+
+```{r}
+ggplot(dat) +
+ aes(x = Murder, y = Assault, colour = UrbanPop, size = UrbanPop) +
+ geom_point() +
+ geom_smooth(span = 0.75) +
+ scale_color_viridis_c(option = "inferno") +
+ theme_minimal()
+```
+
+```{r}
+ggplot(dat2) +
+ aes(x = displ, y = hwy, colour = class, size = cyl) +
+ geom_point() +
+ scale_color_viridis_d(option = "plasma") +
+ theme_minimal()
+```
+
+
+
+
