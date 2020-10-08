@@ -2,10 +2,12 @@
 title: "Improving Visualizations with Esquisse"
 author: "Meghan Paquette"
 date: "10/8/2020"
-output:
-  tufte::tufte_html: default
+output: 
+  html_document:
+    df_print: paged
+    theme: darkly
+    highlight: haddock
 ---
-```{r}
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -30,3 +32,30 @@ library(esquisse)
 dat <- USArrests
 head(dat, 3) 
 ```
+```{r}
+dat2 <- mpg
+head(dat2, 3)
+```
+<br>
+
+### Using the Package
+
+Now, from here, when this code chuck below runs, a pop-up will appear which is where you can ‘drag-and-drop’ information. 
+<br>
+
+This part below would be in an r code chunk, but for the sake of knitting to html, it is listed as a stand alone in bold. 
+<br>
+
+{r}**esquisse::esquisser()**
+
+<br>
+
+##### STEP 1: Select what dataset you want to use. I imported two datasets above, so you can see.
+<br>
+![](StartPage.jpeg)
+
+<br>
+
+##### STEP 2: Select variable and convert any variables as desired/needed. 
+<br>
+![](DataSelect.jpeg)
